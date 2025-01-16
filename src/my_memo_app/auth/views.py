@@ -3,12 +3,11 @@ from models import db, User
 from forms import LoginForm, SignUpForm
 from flask_login import login_user, logout_user, login_required
 
+
 # authのBlueprint
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
 
-# ==================================================
-# ルーティング
-# ==================================================
+
 # ログイン（Form使用）
 @auth_bp.route("/", methods=["GET", "POST"])
 def login():
@@ -33,6 +32,7 @@ def login():
     # 画面遷移
     return render_template("auth/login_form.html", form=form)
 
+
 # ログアウト
 @auth_bp.route("/logout")
 @login_required
@@ -40,9 +40,10 @@ def logout():
     # 現在ログインしているユーザーをログアウトする
     logout_user()
     # フラッシュメッセージ
-    flash("ログアウトしました")   
+    flash("ログアウトしました")
     # 画面遷移
     return redirect(url_for("auth.login"))
+
 
 # サインアップ（Form使用）
 @auth_bp.route("/register", methods=["GET", "POST"])
@@ -61,8 +62,8 @@ def register():
         db.session.add(user)
         db.session.commit()
         # フラッシュメッセージ
-        flash("ユーザー登録しました")   
-        # 画面遷移 
+        flash("ユーザー登録しました")
+        # 画面遷移
         return redirect(url_for("auth.login"))
     # GET時
     # 画面遷移
