@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from models import db, Memo
 from forms import MemoForm
-from flask_login import login_required, current_user  # <= リスト13-2追加
+from flask_login import login_required, current_user
 
 # memoのBlueprint
 memo_bp = Blueprint('memo', __name__, url_prefix='/memo')

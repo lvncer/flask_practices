@@ -6,7 +6,6 @@ from flask_login import login_required
 
 # Blueprint
 wiki_bp = Blueprint('wiki', __name__, url_prefix='/wiki')
-
 # 日本語版Wikipediaを利用
 wiki_ja = Wikipedia('ja')
 

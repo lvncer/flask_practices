@@ -5,7 +5,6 @@ from flask_login import LoginManager
 from auth.views import auth_bp
 from memo.views import memo_bp
 from wiki.views import wiki_bp
-from views import *
 
 
 app = Flask(__name__)
@@ -32,6 +31,9 @@ app.register_blueprint(wiki_bp)
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+
+from views import *
 
 
 if __name__ == "__main__":
